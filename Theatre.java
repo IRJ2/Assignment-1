@@ -47,57 +47,80 @@ public class Theatre {
         System.out.print("Enter seat number: ");
         // store user input in variable
         int seat = input.nextInt();
-        // create flag variable to check if seat is available
+        // create flag variable to check if seat is purchased or not
         boolean flag = false;
         // create a switch statement to perform different actions based on user input
         switch (row) {
             // if user enters 1
             case 1:
-                // check if seat is available
-                if (row1[seat - 1] == 'O') {
-                    // display message
-                    System.out.println("Ticket purchased");
-                    // set seat to X
-                    row1[seat - 1] = 'X';
-                    flag = true; // seat is available
+                // check if seat number is valid
+                if (seat > 12) {
+                    // if seat number is not valid display error message
+                    System.out.println("Invalid seat number! Please select 1-12");
+                    break;
                 } else {
-                    // if seat is not available display error message
-                    System.out.println("Seat is not available");
+                    // check if seat is available
+                    if (row1[seat - 1] == 'O') {
+                        // display message
+                        System.out.println("Ticket purchased");
+                        // set seat to X
+                        row1[seat - 1] = 'X';
+                        flag = true; // seat is purchased
+                    } else {
+                        // if seat is not available display error message
+                        System.out.println("Seat is not available");
+                    }
                 }
+
                 break;
             // if user enters 2
             case 2:
-                // check if seat is available
-                if (row2[seat - 1] == 'O') {
-                    // display message
-                    System.out.println("Ticket purchased");
-                    // set seat to X
-                    row2[seat - 1] = 'X';
-                    flag = true; // seat is available
+                // check if seat number is valid
+                if (seat > 16) {
+                    // if seat number is not valid display error message
+                    System.out.println("Invalid seat number! Please select 1-16");
+                    break;
                 } else {
-                    // if seat is not available display error message
-                    System.out.println("Seat is not available");
+                    // check if seat is available
+                    if (row2[seat - 1] == 'O') {
+                        // display message
+                        System.out.println("Ticket purchased");
+                        // set seat to X
+                        row2[seat - 1] = 'X';
+                        flag = true; // seat is purchased
+                    } else {
+                        // if seat is not available display error message
+                        System.out.println("Seat is not available");
+                    }
                 }
                 break;
             // if user enters 3
             case 3:
-                // check if seat is available
-                if (row3[seat - 1] == 'O') {
-                    // display message
-                    System.out.println("Ticket purchased");
-                    // set seat to X
-                    row3[seat - 1] = 'X';
-                    flag = true; // seat is available
-                } else {
-                    // if seat is not available display error message
-                    System.out.println("Seat is not available");
+            // check if seat number is valid
+                if (seat > 20) {
+                    // if seat number is not valid display error message
+                    System.out.println("Invalid seat number! Please select 1-20");
+                    break;
+                }
+                else{
+                    // check if seat is available
+                    if (row3[seat - 1] == 'O') {
+                        // display message
+                        System.out.println("Ticket purchased");
+                        // set seat to X
+                        row3[seat - 1] = 'X';
+                        flag = true; // seat is purchased
+                    } else {
+                        // if seat is not available display error message
+                        System.out.println("Seat is not available");
+                    }
                 }
                 break;
             // if user enters any other number display error message
             default:
-                System.out.println("Invalid input");
+                System.out.println("Invalid row number! Please select 1-3");
         }
-        // if seat is available
+        // if seat is purchased
         if (flag) {
             // let the price of ticket in row1, row2,and row3 is 10£, 20£,and 30£
             int price = 0;
@@ -193,31 +216,55 @@ public class Theatre {
         switch (row) {
             // if user enters 1
             case 1:
-                // display message
-                System.out.println("Ticket cancelled");
-                // set seat to O
-                row1[seat - 1] = 'O';
-                flag = true; // ticket is cancelled
+            //check if seat number is valid
+                if (seat > 12) {
+                    // if seat number is not valid display error message
+                    System.out.println("Invalid seat number! Please select 1-12");
+                    break;
+                }
+                else{
+                    // display message
+                    System.out.println("Ticket cancelled");
+                    // set seat to O
+                    row1[seat - 1] = 'O';
+                    flag = true; // ticket is cancelled
+                }
                 break;
             // if user enters 2
             case 2:
-                // display message
-                System.out.println("Ticket cancelled");
-                // set seat to O
-                row2[seat - 1] = 'O';
-                flag = true; // ticket is cancelled
+            // check if seat number is valid
+                if (seat > 16) {
+                    // if seat number is not valid display error message
+                    System.out.println("Invalid seat number! Please select 1-16");
+                    break;
+                }
+                else{
+                    // display message
+                    System.out.println("Ticket cancelled");
+                    // set seat to O
+                    row2[seat - 1] = 'O';
+                    flag = true; // ticket is cancelled
+                }
                 break;
             // if user enters 3
             case 3:
-                // display message
-                System.out.println("Ticket cancelled");
-                // set seat to O
-                row3[seat - 1] = 'O';
-                flag = true; // ticket is cancelled
+            // check if seat number is valid
+                if (seat > 20) {
+                    // if seat number is not valid display error message
+                    System.out.println("Invalid seat number! Please select 1-20");
+                    break;
+                }
+                else{
+                    // display message
+                    System.out.println("Ticket cancelled");
+                    // set seat to O
+                    row3[seat - 1] = 'O';
+                    flag = true; // ticket is cancelled
+                }
                 break;
             // if user enters any other number display error message
             default:
-                System.out.println("Invalid input");
+                System.out.println("Invalid row number! Please select 1-3");
         }
         // if ticket is cancelled
         if (flag) {
@@ -335,9 +382,10 @@ public class Theatre {
     // in ascending order (cheapest first)
     public ArrayList<Ticket> sort_tickets() {
         // sort the array list tickets based on price using linear sort
-        for (int i = 0; i < tickets.size(); i++) {
-            for (int j = i + 1; j < tickets.size(); j++) {
-                if (tickets.get(i).getPrice() > tickets.get(j).getPrice()) {
+        for (int i = 0; i < tickets.size(); i++) {// outer loop
+            for (int j = i + 1; j < tickets.size(); j++) {// inner loop
+                if (tickets.get(i).getPrice() > tickets.get(j).getPrice()) {// compare
+                    // swap the elements
                     Ticket temp = tickets.get(i);
                     tickets.set(i, tickets.get(j));
                     tickets.set(j, temp);
@@ -381,15 +429,15 @@ public class Theatre {
                 case 3:
                     theatre.cancel_ticket();
                     break;
-                // // if user enters 4 call method show_available
+                // if user enters 4 call method show_available
                 case 4:
                     theatre.show_available();
                     break;
-                // // if user enters 5 call method save
+                // if user enters 5 call method save
                 case 5:
                     theatre.save();
                     break;
-                // // if user enters 6 call method load
+                // if user enters 6 call method load
                 case 6:
                     theatre.load();
                     break;
