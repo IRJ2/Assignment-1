@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 // create class theatre
 public class Theatre {
